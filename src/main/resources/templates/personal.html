@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="px-5" layout:fragment="content">
+	
+	<table class="table">
+	
+		<tbody>
+		
+			<tr th:if= "${personals != null }">
+				
+				<td class="my-5 d-block">
+				
+					<div>
+					
+						<h4  th:text = "${personals.getExplanation()}"> </h4>
+						<p> <b th:text = "${personals.getPhone()}"></b> </p>
+						<p th:text = "${personals.getBirth()}"> </p>
+						<p>Address: <span th:text = "${personals.getAddress()}"></span> </p>
+						<p>City: <span th:text = "${personals.getCity()}"></span> </p>
+						
+						<a th:href = "@{/user/personaldetail(id=${personals.getId()})}" class="btn btn-warning text-white"> <b>Detail</b> </a>
+					</div>
+				</td>
+			</tr>
+		
+		</tbody>
+	
+	</table>
+	
+	<div>
+		<a href="/user/addpersonal"  th:if= "${personals == null }"> <button class="btn btn-primary btn-lg mb-5">New</button>  </a>
+	</div>
+	
+
+</div>
+			
+		
+
+</body>
+</html>

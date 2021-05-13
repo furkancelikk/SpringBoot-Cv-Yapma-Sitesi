@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layoutAdmin">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+ 
+ <div class="container py-5 d-flex flex-column" layout:fragment="content">
+ 
+ 
+ 		<div>
+ 		
+ 		
+ 		
+			<h1 class="mb-5 text-uppercase" th:text="${user.name + ' ' + user.surname}"></h1>
+			
+ 		
+ 		</div>
+ 		
+ 		<div class="d-flex">
+
+			<div class="col-md-4  p-4">
+			
+				<h5 tx:text = "${user.name}">Profile</h5>
+				
+				
+				<p> 
+				
+			
+			
+				<div th:if= "${personal != null }">
+				
+					<small th:text="${personal.explanation}"> </small> </p>
+					
+					<h5>Personal</h5>
+				
+					<p> <small> <b>Birth:</b> </small> <small th:text="${personal.birth}"></small> </p>
+					
+					<p> <small> <b>City:</b></small> <small th:text="${personal.city}"></small> </p>
+					
+					<p> <small> <b>Address:</b> </small>  <small th:text="${personal.address}"></small> </p>
+					  
+					  <h5>Contact</h5>
+					  
+					  <p >  
+					  <small> <b>Phone:</b></small> <small th:text="${personal.phone}"></small> </p>
+					  
+					  
+					  <p> <small><b>E-mail:</b> </small>
+				
+				</div>
+				
+				  <small th:text="${user.mail}"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </small> </p>
+				  
+				<h5 class="border-bottom">Hobiler</h5>
+				<table>
+				
+					<tbody>
+					
+						<tr th:each = "hobi : ${user.hobbies}">
+							
+							<td class="my-1 d-block">
+														
+									<small th:text = "${hobi.getName()}"> </small>
+									
+							</td>
+						</tr>
+					
+					</tbody>
+				
+				</table>
+				
+				<h5 class="border-bottom mt-3">References</h5>
+				<table>
+				
+					<tbody>
+					
+						<tr th:each = "reference : ${user.references}">
+							
+							<td class="my-2 d-block">
+														
+									<h6 th:text = "${reference.getName() + ' ' + reference.getSurname()}"> </h6>
+									<p th:text = "${reference.getCompany() + ' - ' + reference.getPosition()}"> </p>
+									<p th:text = "${reference.getMail()}"> </p>
+									<p th:text = "${reference.getPhone()}"> </p>
+									
+							</td>
+						</tr>
+					
+					</tbody>
+				
+				</table>
+			
+			</div>
+	
+			<div class="col-md-8 px-5">
+				
+				
+				<h5 class="border-bottom">Eğitim</h5>
+				<table>
+					
+					<tr th:each="education : ${user.educations}"  class="d-block my-3">
+						
+						<td>
+						
+							<h6 th:text="${education.university}"></h6>
+							
+							<p th:text="${education.faculty + ' - ' + education.department}"></p>
+							
+							<p th:text="${education.startDate + '  /  ' + education.graduationDate}"> başlangıç - bitiş </p>
+							
+							<p> Grade: <span th:text="${education.grade}"></span> </p>
+							
+							<p> Average: <span th:text="${education.average}"></span> </p>
+						</td>
+					 </tr>
+				
+				</table>
+				
+				
+				<h5 class="border-bottom">Deneyimler</h5>
+				<table>
+					
+					<tr th:each="experience : ${user.experience}"  class="d-block my-3">
+						
+						<td class="my-2 d-block">
+					
+							<div>
+						
+							<h6  th:text = "${experience.getCompany()}"> </h6>
+							<p th:text = "${experience.getPosition()}">  </p>
+							<p th:text = "${experience.getCity()}"> </p>
+							<p th:text = "${experience.getStart_date() + '  /  ' + experience.getFinish_date()}"> </p>
+				
+						</div>
+						</td>
+					 </tr>
+				
+				</table>
+				
+				<h5 class="border-bottom">Yetenekler</h5>
+				<table>
+					
+					<tr th:each="skill : ${user.skills}" class="d-block my-3">
+						
+						<td class="my-2 d-block">
+					
+							<div class="d-flex justify-content-between">
+							
+								<p th:text="${skill.name}"  style="width: 350px;"> </p>
+														
+								<progress th:value = "${skill.getLevel()*20}"  max="100" class="ml-0 mr-5 flex-grow-1"></progress>
+								
+								
+							</div>
+						</td>
+					 </tr>
+				
+				</table>
+				
+				
+			</div>
+			
+		</div>
+	 
+ </div>
+
+
+
+</body>
+</html>

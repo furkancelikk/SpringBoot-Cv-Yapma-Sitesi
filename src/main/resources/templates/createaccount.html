@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+<style>
+
+	body{
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.linear-gradient{
+	 		background: linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))
+	}
+	
+	.min-content{
+		max-width: min-content;
+	}
+	
+	
+
+</style>
+
+
+</head>
+
+<body class="bg-gradient-success linear-gradient">
+
+	<div class="container min-content bg-dark px-5 py-5  rounded-left rounded-bottom rounded-top rounded-right">
+	
+	
+		<div class="row">
+		
+			<form name="f" th:action="@{/create/createNew}" method="post" class="text-white">
+		
+		
+				
+				<div th:if="${param.error}" class="alert alert-error">
+					Invalid e-mail or password
+				</div>
+				
+				<div th:if="${param.logout}" class="alert alert-success"> 
+	                    You have been logged out.
+	             </div>
+	             
+	            
+	            <div class="form-group">
+					<label for="mail" class="d-block h4">Name</label>
+					<input type="text" id="mail" name="name" placeholder="Name" class="form-control-lg" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="surname" class="d-block h4">Surname</label>
+					<input type="text" id="surname" name="surname" placeholder="Surname" class="form-control-lg" required>
+				</div>	 
+	             
+	            
+				<div class="form-group">
+					<label for="mail" class="d-block h4">E-mail</label>
+					<input type="email" id="mail" name="mail" placeholder="Your E-mail" class="form-control-lg" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="password" class="d-block h4">Password</label>
+					<input type="password" id="password" name="password" placeholder="Your Password" class="form-control-lg" required>
+				</div>	
+				
+				<div class="form-group">
+					<button class="container btn linear-gradient text-white">LOGIN</button>
+				</div>		
+
+			</form>
+			
+		
+		</div>
+		
+		<div class="row">
+		
+			<a href="/login" class="text-white">Already Have An Account</a>
+		
+		</div>
+	
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="px-5" layout:fragment="content">
+	
+	<table class="table">
+	
+		<tbody>
+		
+			<tr th:each = "education : ${educations}"  class="">
+				
+				<td class="my-5 d-block">
+				
+					<div>
+					
+						<h4  th:text = "${education.getUniversity()}"> </h4>
+						<p> <b th:text = "${education.getFaculty()}"></b> </p>
+						<p th:text = "${education.getDepartment()}"> </p>
+						<p>Start: <span th:text = "${education.getStartDate()}"></span> </p>
+						<p>Finish: <span th:text = "${education.getGraduationDate()}"></span> </p>
+						<p>Grade: <span th:text = "${education.getGrade()}"></span> </p>
+						<p>Average: <span th:text = "${education.getAverage()}"></span> </p>
+						
+						<a th:href = "@{/user/edudetail(id=${education.getId()})}" class="btn btn-warning text-white"> <b>Detail</b> </a>
+					</div>
+				</td>
+			</tr>
+		
+		</tbody>
+	
+	</table>
+	
+	<a href="/user/addedu"> <button class="btn btn-primary btn-lg mb-5">New</button>  </a>
+	
+
+</div>
+			
+		
+
+</body>
+</html>

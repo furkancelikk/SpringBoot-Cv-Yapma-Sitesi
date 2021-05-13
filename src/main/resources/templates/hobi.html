@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="px-5" layout:fragment="content">
+	
+	<table class="table">
+	
+		<tbody>
+		
+			<tr th:each = "hobi : ${hobbies}"  class="">
+				
+				<td class="my-3 d-block">
+				
+					<div>
+					
+						<h4  th:text = "${hobi.getName()}"> </h4>
+						
+						<a th:href = "@{/user/hobidetail(id=${hobi.getId()})}" class="btn btn-warning text-white"> <b>Detail</b> </a>
+					</div>
+				</td>
+			</tr>
+		
+		</tbody>
+	
+	</table>
+	
+	<a href="/user/addhobi"> <button class="btn btn-primary btn-lg mb-5">New</button>  </a>
+	
+
+</div>
+			
+		
+
+</body>
+</html>

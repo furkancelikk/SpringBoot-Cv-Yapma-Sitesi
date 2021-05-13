@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layoutAdmin">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+
+</head>
+<body layout:fragment = "content">
+
+
+<div class="container p-5">
+	
+			<table class="table table-bordered table-hover">
+		
+		
+			<thead class="thead-dark">
+				
+				<tr>
+					<th> Name </th>
+					<th> Surname </th>
+					<th> Mail </th>
+					<th> Detail </th>
+				</tr>
+			</thead>
+		
+			<tbody>
+			
+				<tr th:each = "user : ${users}"> 
+					<td th:text = "${user.name}">  </td>
+					<td th:text = "${user.surname}">  </td>
+					<td th:text = "${user.mail }"> </td>
+					<td> <a class="btn btn-warning"  th:href = "@{/admin/userdetail(id=${user.getId()})}">Detail</a> </td>
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="px-5" layout:fragment="content">
+	
+
+				
+				
+	<div class="p-5">
+	
+		<form action="/user/updatehobi" method="post">
+	             
+	           
+				
+				<div class="form-group row">
+					<label for="name" class="d-block h5">Name</label>
+					<input type="text" id="name" name="name" th:field="${hobi.name}" placeholder="Name" class="form-control" autocomplete="off" required>
+				</div>
+	
+				<div class="form-group row">
+				
+					<input type="hidden" value="${hobi.id}" th:field = "${hobi.id}" name="id">
+				
+					<button type="submit" class = "btn btn-warning text-white"><b>Update</b></button>
+					
+					<a  th:href = "@{/user/deletehobi(id=${hobi.getId()})}" class = "btn btn-danger ml-2"> <b>Delete</b> </a>
+				
+				</div>
+				
+			</form>
+			
+			
+	
+		
+	</div>
+
+	
+
+</div>
+			
+		
+
+</body>
+</html>
